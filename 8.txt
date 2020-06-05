@@ -1,0 +1,27 @@
+<!doctype html>
+<head>
+<style>
+ img { width: 350px; height: 350px; display: block; margin: 0 auto; }
+ p { text-align: center; }
+</style>
+</head>
+<body>
+<script>
+ async function apinasa() { 
+  let url = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'; 
+  let apotd = await fetch(url); 
+  let data = await apotd.json();
+  let txt = document.createElement("p");
+  txt.innerHTML = data.copyright;
+  document.body.append(txt);
+  let image = document.createElement("img");
+  image.src = data.url;
+  document.body.append(image);
+  let inf = document.createElement("p");
+  inf.innerHTML = data.explanation;
+  document.body.append(inf);
+                          } 
+ apinasa();	
+</script>
+</body>
+</html>
